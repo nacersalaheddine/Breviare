@@ -1,0 +1,26 @@
+body{
+    background-color: rgba(245,85,85,1);
+}
+
+h1 {
+    color: white;
+}
+
+#principal{
+    padding-top: 50px;
+}
+
+div {
+	transition: all 0.5s;
+}
+
+a {
+	color: white;
+}
+
+a:hover{
+	color: white;
+	text-decoration: none;
+	text-decoration-line: none;
+	text-decoration-style: none;
+}
