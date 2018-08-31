@@ -1,3 +1,15 @@
-You'll have to create a config.js file on the root directory that includes the next:
+# Breviare
 
-config.dbconnection = "connection to your db"
+Breviare is a minimalist URL shortener made in Javascript (NodeJS / ExpressJS / MongoDB / Ajax).
+
+## Config
+
+For it to works properly, it is recommended to create a config.js file in the root directory that contains the db connection
+
+```javascript
+var config = {};
+
+config.dbconnection = 'dbconnectionurl';
+
+module.exports = config;
+```
