@@ -1,5 +1,5 @@
 {
-  "name": "brevis",
+  "name": "breviare",
   "version": "1.0.0",
   "description": "Url shortener made in js",
   "main": "app.js",
