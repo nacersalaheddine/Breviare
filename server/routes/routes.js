@@ -9,10 +9,10 @@ const ip = require('ip');
 router.get('/', (req,res) => {
     Url.find({ip: ip.address()}).limit(5).sort([['createdAt', -1]])
         .then((urls) => {
-            res.render('index', {urls: urls});
+            res.status(200).render('index', {urls: urls});
         })
         .catch((e) => {
-            res.send(e);
+            res.status(400).send(e);
         });
 });
 
@@ -26,21 +26,21 @@ router.post('/generateUrl', (req,res) => {
 	    });
 
 	    urlm.save().then((urlita) => {
-	        res.send(urlita._id)
+	        res.status(201).send(urlita._id)
 	    }).catch((e) => {
-	        res.send(e);
+	        res.status(400).send(e);
 	    });
     }else{
-    	res.send("InvalidURL");
+    	res.status(418).send("InvalidURL");
     }    
 });
 
 router.get('/:url', (req,res) => {
     Url.findOne({_id: req.params.url})
         .then((link) => {
-            res.redirect(`${link.url}`);
+            res.status(200).redirect(`${link.url}`);
         }, (e) => {
-            res.send(e);
+            res.status(400).send(e);
         });
 });
 
