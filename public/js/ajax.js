@@ -13,7 +13,7 @@ $("#urlForm").submit(function(e){
 				<div class="row justify-content-md-center">
 		          <div class="col-md-6">
 		              <p class="text-left animated fadeIn">
-		                <a href="/${response}" target="_blank">Normi.es/${response}</a>
+		                <a href="/${response}" target="_blank" style="color: #E3AA13;">Brevia.re/${response}</a>
 		              </p>
 		          </div>
 		        </div>

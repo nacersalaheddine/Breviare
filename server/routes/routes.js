@@ -4,9 +4,16 @@ const {mongoose} = require('../db/mongoose');
 const shortid = require('shortid');
 var {Url} = require('../models/Url');
 const validUrl = require('valid-url');
+const ip = require('ip');
 
 router.get('/', (req,res) => {
-    res.render('index');
+    Url.find({ip: ip.address()}).limit(5).sort([['createdAt', -1]])
+        .then((urls) => {
+            res.render('index', {urls: urls});
+        })
+        .catch((e) => {
+            res.send(e);
+        });
 });
 
 router.post('/generateUrl', (req,res) => {

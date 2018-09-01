@@ -34,10 +34,19 @@
         </div>
         <div class="row justify-content-md-center animated fadeInUp">
             <div class="col-md-6">
-                <h6 class="text-left" style="color: #E3AA13;">Latests URLs</h6>
+                <h6 class="text-left" style="color: #E3AA13;">Latests URLs</h6>                
             </div>            
         </div>
-        <div id="urls">
+        <div id="urls" class="animated fadeIn">
+          {{#each urls}}
+            <div class="row justify-content-md-center">
+              <div class="col-md-6">
+                <p class="text-left animated fadeIn">
+                  <a href="/{{_id}}" target="_blank" style="color: #E3AA13;">Brevia.re/{{_id}}</a>
+                </p>
+              </div>
+            </div>
+                {{/each}}
         </div>
     </div>
 
