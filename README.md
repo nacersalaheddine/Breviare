@@ -24,4 +24,4 @@ module.exports = config;
 
 You can try it here, please remember that an url shortener deppends on the url and this domain is a free one provided by Heroku.
 
-https://boiling-dawn-44625.herokuapp.com/
+http://breviare.herokuapp.com/
