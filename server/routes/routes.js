@@ -18,18 +18,27 @@ router.get('/', (req,res) => {
 
 router.post('/generateUrl', (req,res) => {
     let url = req.body.url;
-
     if(validUrl.isUri(url)){
-    	const urlm = new Url({
-	        _id: shortid.generate(),
-	        url: req.body.url
-	    });
+        Url.findOne({url: url})
+            .then((link) => {
+                if(link){
+                    res.status(201).send(link._id);
+                }else{
+                    const urlm = new Url({
+                        _id: shortid.generate(),
+                        url: req.body.url
+                    });
 
-	    urlm.save().then((urlita) => {
-	        res.status(201).send(urlita._id)
-	    }).catch((e) => {
-	        res.status(400).send(e);
-	    });
+                    urlm.save().then((urlita) => {
+                        res.status(201).send(urlita._id)
+                    }).catch((e) => {
+                        res.status(400).send(e);
+                    });
+                }
+            })
+            .catch((e) => {
+                res.status(400).send(e);
+            });
     }else{
     	res.status(418).send("InvalidURL");
     }    
