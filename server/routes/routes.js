@@ -24,13 +24,12 @@ router.post('/generateUrl', (req,res) => {
                 if(link){
                     res.status(201).send(link._id);
                 }else{
-                    const urlm = new Url({
-                        _id: shortid.generate(),
+                    const urlmodel = new Url({
                         url: req.body.url
                     });
 
-                    urlm.save().then((urlita) => {
-                        res.status(201).send(urlita._id)
+                    urlmodel.save().then((newurl) => {
+                        res.status(201).send(newurl._id)
                     }).catch((e) => {
                         res.status(400).send(e);
                     });
@@ -47,7 +46,7 @@ router.post('/generateUrl', (req,res) => {
 router.get('/:url', (req,res) => {
     Url.findOne({_id: req.params.url})
         .then((link) => {
-            res.status(200).redirect(`${link.url}`);
+            res.status(200).redirect(link.url);
         }, (e) => {
             res.status(400).send(e);
         });
